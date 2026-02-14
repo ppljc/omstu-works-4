@@ -23,11 +23,13 @@ def task1_4():
 
             people_amount += 1
 
-            vote = [int(i) for i in vote.split(' ')]
+            vote = [int(i) - 1 for i in vote.split(' ')]
             people_votes.append(vote)
 
-            candidate_votes_dict[candidates[vote[0]]]['votes'] = candidate_votes_dict.get(candidates[vote[0]], {votes}) + 1
-            candidate_votes_dict[candidates[vote[0]]]['index'] = vote[0]
+            candidate_votes_dict[candidates[vote[0]]] = {
+                'votes': candidate_votes_dict.get(candidates[vote[0]], {}).get('votes', 0) + 1,
+                'index': vote[0]
+            }
 
         for candidate, info in candidate_votes_dict.items():
             candidate_votes.append(
@@ -42,22 +44,22 @@ def task1_4():
 
 
 def calculate_votes(people_votes: list, candidate_votes: list, people_amount: int):
-    candidate_votes = list(sorted(candidate_votes, key=lambda cand: cand['votes'], reverse=True))
+    candidate_votes = list(sorted(candidate_votes, key=lambda candidate_vote: candidate_vote['votes'], reverse=True))  # sort from high to low amount of votes
 
     if all(candidate_vote['votes'] == candidate_votes[0]['votes'] for candidate_vote in candidate_votes):  # if every votes amount equals
         return [candidate_vote['candidate'] for candidate_vote in candidate_votes]
     elif candidate_votes[0]['votes'] / people_amount >= 0.5:  # if biggest amount of votes higher or equals to 50%
         return [candidate_votes[0]['candidate']]
     else:
-        candidate_votes.reverse()
-        candidate_votes_cut = candidate_votes
-        candidate_votes_removed = []
-        candidate_votes_removed_indexes = []
+        candidate_votes.reverse()  # reversed for faster finding candidates with lower votes
+        candidate_votes_cut = candidate_votes.copy()  # copying array
+        candidate_votes_removed = []  # array for candidates who was removed due to the lowest votes
+        candidate_votes_removed_indexes = []  # array for indexes of candidates from previous array
         for i in range(len(candidate_votes)):
-            if candidate_votes[i]['votes'] == candidate_votes[0]['votes']:
-                candidate_votes_removed.append(candidate_votes[i])
-                candidate_votes_removed_indexes.append(candidate_votes[i]['index'])
-                del candidate_votes_cut[i]
+            if candidate_votes[i]['votes'] == candidate_votes[0]['votes']:  # if candidate votes equals to minimum candidate votes
+                candidate_votes_removed.append(candidate_votes[i])  # add candidate to array
+                candidate_votes_removed_indexes.append(candidate_votes[i]['index'])  # add candidate index to array
+                del candidate_votes_cut[i]  # delete candidate from copied original array
             else:
                 break
 
