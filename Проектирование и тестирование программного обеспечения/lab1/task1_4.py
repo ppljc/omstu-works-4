@@ -40,7 +40,14 @@ def task1_4():
                 }
             )
 
-        print(calculate_votes(people_votes, candidate_votes, people_amount))
+        blocks_results.append(calculate_votes(people_votes, candidate_votes, people_amount))
+
+    print(blocks_results)
+
+    for block_result in blocks_results:
+        for candidate in block_result:
+            print(candidate)
+        print('\n')
 
 
 def calculate_votes(people_votes: list, candidate_votes: list, people_amount: int):
@@ -63,25 +70,25 @@ def calculate_votes(people_votes: list, candidate_votes: list, people_amount: in
             else:
                 break
 
-        for i in range(len(candidate_votes_removed)):
+        for i in range(len(candidate_votes_removed)):  # for every removed candidate
             index_removed = candidate_votes_removed[i]['index']  # index of candidate who was removed
-            for k in range(len(people_votes)):
-                people_vote = people_votes[k]
-                if people_vote[0] == index_removed:
-                    new_people_vote = []
-                    for j in range(len(people_vote[1:])):
-                        current_people_vote = people_vote[1:][j]
-                        if current_people_vote in candidate_votes_removed_indexes:
-                            continue
+            for k in range(len(people_votes)):  # for every people vote
+                people_vote = people_votes[k]  # take N people votes
+                if people_vote[0] == index_removed:  # if first vote from people in array of removed candidate indexes
+                    new_people_vote = []  # array for new people vote
+                    for j in range(len(people_vote[1:])):  # for every next vote from people after first
+                        current_people_vote = people_vote[1:][j]  # new people vote
+                        if current_people_vote in candidate_votes_removed_indexes:  # if new people vote in array of removed candidate indexes
+                            continue  # skip this vote
 
-                        new_people_vote = people_vote[(1 + j):]
-                        for candidate_vote in candidate_votes:
-                            if candidate_vote['index'] == current_people_vote:
-                                candidate_vote['votes'] = candidate_vote.get('votes', 0) + 1
-                        break
-                    people_votes[k] = new_people_vote
+                        new_people_vote = people_vote[(1 + j):]  # if vote not in removed candidate indexes new people vote started from this
+                        for candidate_vote in candidate_votes_cut:  # for every candidate
+                            if candidate_vote['index'] == current_people_vote:  # if index of candidate is new people vote
+                                candidate_vote['votes'] = candidate_vote.get('votes', 0) + 1  # add vote to candidate
+                        break  # break because next votes dont needed
+                    people_votes[k] = new_people_vote  # updating people vote
 
-        result = calculate_votes(people_votes, candidate_votes_cut, people_amount)
+        result = calculate_votes(people_votes, candidate_votes_cut, people_amount)  # recursion for calculating
 
         return result
 
