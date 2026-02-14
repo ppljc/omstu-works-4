@@ -2,7 +2,7 @@ def task1_4():
     blocks = int(input())  # blocks amount
     blocks_results = []
 
-    for block in range(blocks):
+    for _block in range(blocks):
         _space = input()  # space
         n = int(input())  # candidates amount
         candidates = []   # for candidates names
@@ -11,49 +11,77 @@ def task1_4():
             candidate = input()
             candidates.append(candidate)
 
-        votes_amount = 0
-        votes = []
-        votes_statistics_rounds = [ {} for _ in range(n) ]  # vote results by order, stats after first, second, etc.
-        votes_statistics_rounds_percentage = [ {} for _ in range(n) ]
+        people_amount = 0
+        people_votes = []
+        candidate_votes_dict = {}  # votes from first order in form candidate: {votes, index}
+        candidate_votes = []  # votes from first order in form [id, candidate, votes]
+
         while True:
             vote = input()
             if vote == '':  # on blank line - stop entering
                 break
 
+            people_amount += 1
+
             vote = [int(i) for i in vote.split(' ')]
-            votes.append(vote)
+            people_votes.append(vote)
 
-            votes_amount += 1
-            for i in range(n):
-                people_vote = vote[i]
-                votes_statistics_rounds[i][candidates[people_vote - 1]] = votes_statistics_rounds[i].get(candidates[people_vote - 1], 0) + 1  # add vote to candidate
-                votes_statistics_rounds_percentage[i][candidates[people_vote - 1]] = votes_statistics_rounds[i][candidates[people_vote - 1]] / votes_amount
+            candidate_votes_dict[candidates[vote[0]]]['votes'] = candidate_votes_dict.get(candidates[vote[0]], {votes}) + 1
+            candidate_votes_dict[candidates[vote[0]]]['index'] = vote[0]
 
-        votes_final_statistics = {}
-        votes_final_statistics_percentage = {}
-        for vote_round in range(n):
-            votes_statistics_rounds_percentage[vote_round] = dict(sorted(votes_statistics_rounds_percentage[vote_round].items(), key=lambda k: k[1], reverse=True))
+        for candidate, info in candidate_votes_dict.items():
+            candidate_votes.append(
+                {
+                    'index': info['index'],
+                    'candidate': candidate,
+                    'votes': info['votes']
+                }
+            )
 
-            votes_min = ['', votes_amount]
-            for key, value in votes_statistics_rounds_percentage[vote_round].items():
-                if value >= 0.5:
-                    blocks_results.append([key])
-                if value <= votes_min[1]:
-                    votes_min[0] = key
-                    votes_min[1] = value
-
-            for vote in votes:
-                if vote[vote_round]
+        print(calculate_votes(people_votes, candidate_votes, people_amount))
 
 
-def calculate_votes(current_round: dict, second_round: dict, votes_amount: int, votes: list):
-    votes_min = ['', votes_amount]
-    for key, value in current_round.items():
-        if value / votes_amount >= 0.5:
-            return [key]
-        if value <= votes_min[1]:
-            votes_min[0] = key
-            votes_min[1] = value
+def calculate_votes(people_votes: list, candidate_votes: list, people_amount: int):
+    candidate_votes = list(sorted(candidate_votes, key=lambda cand: cand['votes'], reverse=True))
+
+    if all(candidate_vote['votes'] == candidate_votes[0]['votes'] for candidate_vote in candidate_votes):  # if every votes amount equals
+        return [candidate_vote['candidate'] for candidate_vote in candidate_votes]
+    elif candidate_votes[0]['votes'] / people_amount >= 0.5:  # if biggest amount of votes higher or equals to 50%
+        return [candidate_votes[0]['candidate']]
+    else:
+        candidate_votes.reverse()
+        candidate_votes_cut = candidate_votes
+        candidate_votes_removed = []
+        candidate_votes_removed_indexes = []
+        for i in range(len(candidate_votes)):
+            if candidate_votes[i]['votes'] == candidate_votes[0]['votes']:
+                candidate_votes_removed.append(candidate_votes[i])
+                candidate_votes_removed_indexes.append(candidate_votes[i]['index'])
+                del candidate_votes_cut[i]
+            else:
+                break
+
+        for i in range(len(candidate_votes_removed)):
+            index_removed = candidate_votes_removed[i]['index']  # index of candidate who was removed
+            for k in range(len(people_votes)):
+                people_vote = people_votes[k]
+                if people_vote[0] == index_removed:
+                    new_people_vote = []
+                    for j in range(len(people_vote[1:])):
+                        current_people_vote = people_vote[1:][j]
+                        if current_people_vote in candidate_votes_removed_indexes:
+                            continue
+
+                        new_people_vote = people_vote[(1 + j):]
+                        for candidate_vote in candidate_votes:
+                            if candidate_vote['index'] == current_people_vote:
+                                candidate_vote['votes'] = candidate_vote.get('votes', 0) + 1
+                        break
+                    people_votes[k] = new_people_vote
+
+        result = calculate_votes(people_votes, candidate_votes_cut, people_amount)
+
+        return result
 
 
 if __name__ == '__main__':
