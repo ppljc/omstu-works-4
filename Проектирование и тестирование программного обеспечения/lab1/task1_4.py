@@ -1,13 +1,12 @@
-def task1_4():
+def string_input():
     print('Входные данные:')
-    blocks = int(input())  # blocks amount
+    blocks_amount = int(input())  # blocks amount
     _space = input()  # space
-    blocks_results = []
+    blocks = []
 
-    for _block in range(blocks):
-        # _space = input()  # space
+    for _block in range(blocks_amount):
         n = int(input())  # candidates amount
-        candidates = []   # for candidates names
+        candidates = []  # for candidates names
 
         for i in range(n):  # candidates enter
             candidate = input()
@@ -42,10 +41,18 @@ def task1_4():
                 }
             )
 
-        blocks_results.append(calculate_votes(people_votes, candidate_votes, people_amount))
+        blocks.append((people_votes, candidate_votes, people_amount))
+
+    return blocks
+
+
+def task1_4():
+    blocks = string_input()
 
     print('Выходные данные:')
-    for block_result in blocks_results:
+    for block in blocks:
+        people_votes, candidate_votes, people_amount = block
+        block_result = calculate_votes(people_votes, candidate_votes, people_amount)
         for candidate in block_result:
             print(candidate)
         print('')
@@ -65,7 +72,6 @@ def calculate_votes(people_votes: list, candidate_votes: list, people_amount: in
         candidate_votes_removed_indexes = []  # array for indexes of candidates from previous array
         for i in range(len(candidate_votes)):
             if candidate_votes[i]['votes'] == candidate_votes[0]['votes']:  # if candidate votes equals to minimum candidate votes
-                print(f'deleted: {candidate_votes[i]}')
                 candidate_votes_removed.append(candidate_votes[i])  # add candidate to array
                 candidate_votes_removed_indexes.append(candidate_votes[i]['index'])  # add candidate index to array
                 candidate_votes_cut.remove(candidate_votes[i])  # delete candidate from copied original array
