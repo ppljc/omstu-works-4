@@ -1,4 +1,4 @@
-def string_input():
+def string_input() -> list:
     print('Входные данные:')
     blocks_amount = int(input())  # blocks amount
     _space = input()  # space
@@ -58,7 +58,7 @@ def task1_4():
         print('')
 
 
-def calculate_votes(people_votes: list, candidate_votes: list, people_amount: int):
+def calculate_votes(people_votes: list, candidate_votes: list, people_amount: int) -> list[str]:
     candidate_votes = list(sorted(candidate_votes, key=lambda candidate_vote: candidate_vote['votes'], reverse=True))  # sort from high to low amount of votes
 
     if all(candidate_vote['votes'] == candidate_votes[0]['votes'] for candidate_vote in candidate_votes):  # if every votes amount equals
@@ -84,6 +84,7 @@ def calculate_votes(people_votes: list, candidate_votes: list, people_amount: in
                     new_people_vote = []  # array for new people vote
                     for j in range(len(people_vote[1:])):  # for every next vote from people after first
                         current_people_vote = people_vote[1:][j]  # new people vote
+
                         if current_people_vote in candidate_votes_removed_indexes:  # if new people vote in array of removed candidate indexes
                             continue  # skip this vote
 
@@ -91,6 +92,7 @@ def calculate_votes(people_votes: list, candidate_votes: list, people_amount: in
                         for candidate_vote in candidate_votes_cut:  # for every candidate
                             if candidate_vote['index'] == current_people_vote:  # if index of candidate is new people vote
                                 candidate_vote['votes'] = candidate_vote.get('votes', 0) + 1  # add vote to candidate
+
                         break  # break because next votes dont needed
                     people_votes[k] = new_people_vote  # updating people vote
 
