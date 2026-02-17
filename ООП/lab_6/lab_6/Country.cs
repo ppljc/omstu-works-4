@@ -5,5 +5,6 @@ public enum Country
     Japan,
     USA,
     France,
-    SouthKorea
+    SouthKorea,
+    China
 }

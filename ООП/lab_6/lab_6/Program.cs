@@ -12,6 +12,9 @@ class Program
                 $"Console: Model - {console.Model}, Processor - {console.Processor}, MediaType - {console.Media}, RAM - {console.RAMSizeGb}GB, HDD - {console.HardDriveSizeGb}GB, Games - {console.InstalledGames.Count}, Accounts - {console.Accounts.Count}.");
         }
         
+        Console.WriteLine(consoles[0].TryHardwareHack());
+        Console.WriteLine(consoles[1].TrySoftwareHack());
+        
         // manufacturers list
         var manufacturers = new List<Manufacturer>{
             new Manufacturer("Sony", Country.Japan, 110000),

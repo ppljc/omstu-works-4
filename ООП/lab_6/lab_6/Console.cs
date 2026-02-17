@@ -13,8 +13,17 @@ public class GameConsole : IConsole, IHack
     public int HardDriveSizeGb { get; set; }
     public List<string> InstalledGames { get; set; } = [];
     public List<string> Accounts { get; set; } = [];
-    
-    public GameConsole() { }
+
+    public GameConsole()
+    {
+        Processor = ProcessorType.X64;
+        CpuClockMHz = 1800;
+        ManufacturerName = ManufacturerName.Microsoft;
+        Media = MediaType.Flash;
+        Model = " Generic Console";
+        RAMSizeGb = 2;
+        HardDriveSizeGb = 128;
+    }
     
     public GameConsole(ProcessorType proc, int clock, ManufacturerName man, MediaType med, string model, int ram, int storage)
     {

@@ -11,17 +11,19 @@ public static class StringExtension
             return input;
         }
 
-        var sb = new StringBuilder();
-        foreach (var c in input)
-        {
-            var isLatin = (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
-
-            if (!isLatin)
-            {
-                sb.Append(c);
-            }
-        }
-
-        return sb.ToString();
+        // var sb = new StringBuilder();
+        // foreach (var c in input)
+        // {
+        //     var isLatin = (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+        //
+        //     if (!isLatin)
+        //     {
+        //         sb.Append(c);
+        //     }
+        // }
+        var output = new string(input.Where(c => !((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))).ToArray());
+        
+        return output;
+        // return sb.ToString();
     }
 }
