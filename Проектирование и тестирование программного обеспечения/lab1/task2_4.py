@@ -36,17 +36,18 @@ def task2_4():
 
     print('Выходные данные:')
     for block in blocks:
-        combinations, tricks_indexes = block
-        tricks = []
+        combinations, tricks_indexes = block  # unpack block
+        tricks = []  # list with trick`s dictionaries
 
-        for combination in combinations:
-            tricks.append(process_combination(combination))  # from every combination (with trick) get a trick
+        for combination in combinations:  # from every combination (with trick) get a trick
+            tricks.append(process_combination(combination))
 
-        for trick_index in tricks_indexes:
+        for trick_index in tricks_indexes:  # for every entered trick in order change desk
             desk = process_deck(desk, tricks[trick_index])
 
-        for card in desk:
+        for card in desk:  # output desk with card names
             print(get_card_name(card))
+        print()
 
 
 def process_combination(combination: list) -> dict:
@@ -79,7 +80,12 @@ def process_deck(desk: list, trick: dict) -> list:
     return desk
 
 
-def get_card_name(index: int):
+def get_card_name(index: int) -> str:
+    """
+    Get card name by index
+    :param index: Index of card in desk
+    :return: String with name of card
+    """
     string_builder = []
 
     card_number = index - (index // 13) * 13
