@@ -1,6 +1,6 @@
 def task3_4() -> None:
     """
-    Function to calculate Australian voting
+    Function to find matching letters in two words
     :return: None
     """
     print('Входные данные:')
@@ -16,6 +16,10 @@ def task3_4() -> None:
 
 
 def blocks_input() -> list[list]:
+    """
+    Function to enter input blocks
+    :return: List with blocks
+    """
     blocks = []
     block = []
 
@@ -35,21 +39,17 @@ def blocks_input() -> list[list]:
 
 
 def found_matching_substring(word_a: str, word_b: str) -> str:
-    result = ''
+    """
+    Find matching letters in two words
+    :param word_a: First word
+    :param word_b: Second word
+    :return: Matching letters
+    """
+    result = ''  # matching letters
 
-    max_length = len(word_a)
-
-    for start in range(0, max_length, 1):
-        for length in range(1, max_length, 1):
-            end = start + length
-
-            if end > max_length:
-                end = max_length
-
-            substring = word_a[start:end]
-
-            if substring in word_b and len(substring) >= len(result):
-                result = substring
+    for letter in word_a:  # for letter in first word
+        if letter in word_b and not(word_a.count(letter) == word_b.count(letter) == result.count(letter)):  # if letter from first word in second word and not in matching letters
+            result += letter * min(word_a.count(letter), word_b.count(letter))  # add to matching letters all entering of current letter
 
     return result
 
