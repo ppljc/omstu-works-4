@@ -1,7 +1,11 @@
 default_deck = [i for i in range(52)]  # default desk for tricks processing
 
 
-def task2_4():
+def task2_4() -> None:
+    """
+    Function to calculate cards desk after given tricks
+    :return: None
+    """
     desk = [i for i in range(52)]  # default desk
 
     print('Входные данные:')
@@ -24,6 +28,10 @@ def task2_4():
 
 
 def string_input() -> list:
+    """
+    Function to enter input blocks
+    :return: List with blocks
+    """
     blocks_amount = int(input())  # blocks amount
     _space = input()  # space
     blocks = []
