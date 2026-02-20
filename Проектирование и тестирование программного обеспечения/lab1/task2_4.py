@@ -1,8 +1,29 @@
 default_deck = [i for i in range(52)]  # default desk for tricks processing
 
 
-def string_input() -> list:
+def task2_4():
+    desk = [i for i in range(52)]  # default desk
+
     print('Входные данные:')
+    blocks = string_input()
+
+    print('Выходные данные:')
+    for block in blocks:
+        combinations, tricks_indexes = block  # unpack block
+        tricks = []  # list with trick`s dictionaries
+
+        for combination in combinations:  # from every combination (with trick) get a trick
+            tricks.append(process_combination(combination))
+
+        for trick_index in tricks_indexes:  # for every entered trick in order change desk
+            desk = process_deck(desk, tricks[trick_index])
+
+        for card in desk:  # output desk with card names
+            print(get_card_name(card))
+        print()
+
+
+def string_input() -> list:
     blocks_amount = int(input())  # blocks amount
     _space = input()  # space
     blocks = []
@@ -27,27 +48,6 @@ def string_input() -> list:
         blocks.append((combinations, tricks))
 
     return blocks
-
-
-def task2_4():
-    desk = [i for i in range(52)]  # default desk
-
-    blocks = string_input()
-
-    print('Выходные данные:')
-    for block in blocks:
-        combinations, tricks_indexes = block  # unpack block
-        tricks = []  # list with trick`s dictionaries
-
-        for combination in combinations:  # from every combination (with trick) get a trick
-            tricks.append(process_combination(combination))
-
-        for trick_index in tricks_indexes:  # for every entered trick in order change desk
-            desk = process_deck(desk, tricks[trick_index])
-
-        for card in desk:  # output desk with card names
-            print(get_card_name(card))
-        print()
 
 
 def process_combination(combination: list) -> dict:

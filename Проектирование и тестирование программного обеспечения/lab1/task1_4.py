@@ -1,3 +1,15 @@
+def task1_4():
+    blocks = string_input()
+
+    print('Выходные данные:')
+    for block in blocks:
+        people_votes, candidate_votes, people_amount = block
+        block_result = calculate_votes(people_votes, candidate_votes, people_amount)
+        for candidate in block_result:
+            print(candidate)
+        print('')
+
+
 def string_input() -> list:
     print('Входные данные:')
     blocks_amount = int(input())  # blocks amount
@@ -48,18 +60,6 @@ def string_input() -> list:
         blocks.append((people_votes, candidate_votes, people_amount))
 
     return blocks
-
-
-def task1_4():
-    blocks = string_input()
-
-    print('Выходные данные:')
-    for block in blocks:
-        people_votes, candidate_votes, people_amount = block
-        block_result = calculate_votes(people_votes, candidate_votes, people_amount)
-        for candidate in block_result:
-            print(candidate)
-        print('')
 
 
 def calculate_votes(people_votes: list, candidate_votes: list, people_amount: int) -> list[str]:
