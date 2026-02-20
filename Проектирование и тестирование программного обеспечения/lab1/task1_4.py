@@ -4,7 +4,7 @@ def task1_4() -> None:
     :return: None
     """
     print('Входные данные:')
-    blocks = string_input()
+    blocks = blocks_input()
 
     print('Выходные данные:')
     for block in blocks:
@@ -16,7 +16,7 @@ def task1_4() -> None:
         print()
 
 
-def string_input() -> list:
+def blocks_input() -> list:
     """
     Function to enter input blocks
     :return: List with blocks
