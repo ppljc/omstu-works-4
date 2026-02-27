@@ -1,0 +1,14 @@
+/home/ppljc/RiderProjects/lab_7/lab_7/bin/Debug/net10.0/lab_7
+/home/ppljc/RiderProjects/lab_7/lab_7/bin/Debug/net10.0/lab_7.deps.json
+/home/ppljc/RiderProjects/lab_7/lab_7/bin/Debug/net10.0/lab_7.runtimeconfig.json
+/home/ppljc/RiderProjects/lab_7/lab_7/bin/Debug/net10.0/lab_7.dll
+/home/ppljc/RiderProjects/lab_7/lab_7/bin/Debug/net10.0/lab_7.pdb
+/home/ppljc/RiderProjects/lab_7/lab_7/obj/Debug/net10.0/lab_7.GeneratedMSBuildEditorConfig.editorconfig
+/home/ppljc/RiderProjects/lab_7/lab_7/obj/Debug/net10.0/lab_7.AssemblyInfoInputs.cache
+/home/ppljc/RiderProjects/lab_7/lab_7/obj/Debug/net10.0/lab_7.AssemblyInfo.cs
+/home/ppljc/RiderProjects/lab_7/lab_7/obj/Debug/net10.0/lab_7.csproj.CoreCompileInputs.cache
+/home/ppljc/RiderProjects/lab_7/lab_7/obj/Debug/net10.0/lab_7.dll
+/home/ppljc/RiderProjects/lab_7/lab_7/obj/Debug/net10.0/refint/lab_7.dll
+/home/ppljc/RiderProjects/lab_7/lab_7/obj/Debug/net10.0/lab_7.pdb
+/home/ppljc/RiderProjects/lab_7/lab_7/obj/Debug/net10.0/lab_7.genruntimeconfig.cache
+/home/ppljc/RiderProjects/lab_7/lab_7/obj/Debug/net10.0/ref/lab_7.dll
