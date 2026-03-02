@@ -4,6 +4,35 @@ namespace lab_6;
 
 public class GameConsole : IConsole, IHack
 {
+    private EventHandler<string>? _userAdded;
+    private EventHandler? _driveConnected;
+    private EventHandler<string>? _gameInstalled;
+    private EventHandler? _gamepadReplaced;
+    
+    public event EventHandler<string> UserAdded
+    {
+        add { _userAdded += value; }
+        remove { _userAdded -= value; }
+    }
+    
+    public event EventHandler DriveConnected
+    {
+        add { _driveConnected += value; }
+        remove { _driveConnected -= value; }
+    }
+    
+    public event EventHandler<string> GameInstalled
+    {
+        add { _gameInstalled += value; }
+        remove { _gameInstalled -= value; }
+    }
+    
+    public event EventHandler GamepadReplaced
+    {
+        add { _gamepadReplaced += value; }
+        remove { _gamepadReplaced -= value; }
+    }
+    
     public ProcessorType Processor { get; set; }
     public int CpuClockMHz { get; set; }
     public ManufacturerName ManufacturerName { get; set; }
@@ -11,8 +40,12 @@ public class GameConsole : IConsole, IHack
     public string Model { get; set; }
     public int RAMSizeGb { get; set; }
     public int HardDriveSizeGb { get; set; }
-    public List<string> InstalledGames { get; set; } = [];
-    public List<string> Accounts { get; set; } = [];
+    
+    private readonly List<string> _installedGames = [];
+    public IReadOnlyList<string> InstalledGames => _installedGames;
+    
+    private readonly List<string> _accounts = [];
+    public IReadOnlyList<string> Accounts => _accounts;
 
     public GameConsole()
     {
@@ -37,6 +70,28 @@ public class GameConsole : IConsole, IHack
     }
 
     private static readonly Random Random = new Random();
+
+    public void AddAccount(string name)
+    {
+        _accounts.Add(name);
+        _userAdded?.Invoke(this, name);
+    }
+    
+    public void ConnectedExternalDrive()
+    {
+        _driveConnected?.Invoke(this, EventArgs.Empty);
+    }
+    
+    public void InstallGame(string gameName)
+    {
+        _installedGames.Add(gameName);
+        _gameInstalled?.Invoke(this, gameName);
+    }
+    
+    public void ReplaceGamepad()
+    {
+        _gamepadReplaced?.Invoke(this, EventArgs.Empty);
+    }
     
     public bool TrySoftwareHack()
     {
@@ -120,7 +175,7 @@ public class GameConsole : IConsole, IHack
             var game = AvailableGames[Random.Next(0, 8)];
             
             if (!console.InstalledGames.Contains(game))
-                console.InstalledGames.Add(game);
+                console.InstallGame(game);
         }
 
         var accountsAmount = Random.Next(1, 3);
@@ -135,7 +190,7 @@ public class GameConsole : IConsole, IHack
                 accountName.Append(randomChar);
             }
             
-            console.Accounts.Add(accountName.ToString());
+            console.AddAccount(accountName.ToString());
         }
 
         return console;
@@ -151,5 +206,21 @@ public class GameConsole : IConsole, IHack
         }
 
         return consoles;
+    }
+
+    public void ShowAccounts()
+    {
+        for (var i = 0; i < Accounts.Count; i++)
+        {
+            Console.WriteLine($"{i}. {Accounts[i]}");
+        }
+    }
+    
+    public void ShowGames()
+    {
+        for (var i = 0; i < InstalledGames.Count; i++)
+        {
+            Console.WriteLine($"{i}. {InstalledGames[i]}");
+        }
     }
 }

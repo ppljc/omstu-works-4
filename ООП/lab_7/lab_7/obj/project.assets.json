@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ppljc/omstu-works-4/ООП/lab_7/lab_7/lab_7.csproj",
+      "projectUniqueName": "/mnt/data/Repositories/omstu-works-4/ООП/lab_7/lab_7/lab_7.csproj",
       "projectName": "lab_7",
-      "projectPath": "/home/ppljc/omstu-works-4/ООП/lab_7/lab_7/lab_7.csproj",
+      "projectPath": "/mnt/data/Repositories/omstu-works-4/ООП/lab_7/lab_7/lab_7.csproj",
       "packagesPath": "/home/ppljc/.nuget/packages/",
-      "outputPath": "/home/ppljc/omstu-works-4/ООП/lab_7/lab_7/obj/",
+      "outputPath": "/mnt/data/Repositories/omstu-works-4/ООП/lab_7/lab_7/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ppljc/.nuget/NuGet/NuGet.Config"

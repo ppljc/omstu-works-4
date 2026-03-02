@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5gexXFx0Lig=",
+  "dgSpecHash": "3h46xr7b6BA=",
   "success": true,
-  "projectFilePath": "/home/ppljc/omstu-works-4/ООП/lab_7/tests/tests.csproj",
+  "projectFilePath": "/mnt/data/Repositories/omstu-works-4/ООП/lab_7/tests/tests.csproj",
   "expectedPackageFiles": [
     "/home/ppljc/.nuget/packages/coverlet.collector/6.0.4/coverlet.collector.6.0.4.nupkg.sha512",
     "/home/ppljc/.nuget/packages/microsoft.applicationinsights/2.22.0/microsoft.applicationinsights.2.22.0.nupkg.sha512",

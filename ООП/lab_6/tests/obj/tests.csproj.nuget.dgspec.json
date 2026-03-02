@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/ppljc/omstu-works-4/ООП/lab_6/tests/tests.csproj": {}
+    "/mnt/data/Repositories/omstu-works-4/ООП/lab_6/tests/tests.csproj": {}
   },
   "projects": {
-    "/home/ppljc/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj": {
+    "/mnt/data/Repositories/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ppljc/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj",
+        "projectUniqueName": "/mnt/data/Repositories/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj",
         "projectName": "lab_6",
-        "projectPath": "/home/ppljc/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj",
+        "projectPath": "/mnt/data/Repositories/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj",
         "packagesPath": "/home/ppljc/.nuget/packages/",
-        "outputPath": "/home/ppljc/omstu-works-4/ООП/lab_6/lab_6/obj/",
+        "outputPath": "/mnt/data/Repositories/omstu-works-4/ООП/lab_6/lab_6/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ppljc/.nuget/NuGet/NuGet.Config"
@@ -343,14 +343,14 @@
         }
       }
     },
-    "/home/ppljc/omstu-works-4/ООП/lab_6/tests/tests.csproj": {
+    "/mnt/data/Repositories/omstu-works-4/ООП/lab_6/tests/tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ppljc/omstu-works-4/ООП/lab_6/tests/tests.csproj",
+        "projectUniqueName": "/mnt/data/Repositories/omstu-works-4/ООП/lab_6/tests/tests.csproj",
         "projectName": "tests",
-        "projectPath": "/home/ppljc/omstu-works-4/ООП/lab_6/tests/tests.csproj",
+        "projectPath": "/mnt/data/Repositories/omstu-works-4/ООП/lab_6/tests/tests.csproj",
         "packagesPath": "/home/ppljc/.nuget/packages/",
-        "outputPath": "/home/ppljc/omstu-works-4/ООП/lab_6/tests/obj/",
+        "outputPath": "/mnt/data/Repositories/omstu-works-4/ООП/lab_6/tests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ppljc/.nuget/NuGet/NuGet.Config"
@@ -365,8 +365,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "/home/ppljc/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj": {
-                "projectPath": "/home/ppljc/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj"
+              "/mnt/data/Repositories/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj": {
+                "projectPath": "/mnt/data/Repositories/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj"
               }
             }
           }

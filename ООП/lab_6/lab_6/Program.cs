@@ -4,6 +4,36 @@ class Program
 {
     static void Main(string[] args)
     {
+        var console = GameConsole.Generate();
+        Console.WriteLine(
+                $"Console: Model - {console.Model}, Processor - {console.Processor}, MediaType - {console.Media}, RAM - {console.RAMSizeGb}GB, HDD - {console.HardDriveSizeGb}GB, Games - {console.InstalledGames.Count}, Accounts - {console.Accounts.Count}.");
+        
+        Console.WriteLine("\nConsole accounts before:");
+        console.ShowAccounts();
+        
+        Console.WriteLine("\nConsole games before:");
+        console.ShowGames();
+        
+        console.UserAdded += (sender, userName) =>
+        {
+            Console.WriteLine($"[Event] New user added: {userName}");
+        };
+        console.GameInstalled += (sender, game) =>
+        {
+            Console.WriteLine($"[Event] New game installed: {game}");
+        };
+        
+        console.AddAccount("ppljc");
+        console.InstallGame("Копатель онлайн");
+        
+        Console.WriteLine("\nConsole accounts now:");
+        console.ShowAccounts();
+        
+        Console.WriteLine("\nConsole games now:");
+        console.ShowGames();
+    }
+    static void Main_lab6(string[] args)
+    {
         // consoles generation
         var consoles = GameConsole.Generate100();
         foreach (var console in consoles)

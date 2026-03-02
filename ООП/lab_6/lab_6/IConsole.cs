@@ -9,6 +9,6 @@ public interface IConsole
     string Model { set; get; }
     int RAMSizeGb { get; set; }
     int HardDriveSizeGb { set; get; }
-    List<string> InstalledGames { set; get; }
-    List<string> Accounts { set; get; }
+    IReadOnlyList<string> InstalledGames { get; }
+    IReadOnlyList<string> Accounts { get; }
 }
