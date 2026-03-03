@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/mnt/data/Repositories/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj": {}
+    "/home/ppljc/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj": {}
   },
   "projects": {
-    "/mnt/data/Repositories/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj": {
+    "/home/ppljc/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/mnt/data/Repositories/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj",
+        "projectUniqueName": "/home/ppljc/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj",
         "projectName": "lab_6",
-        "projectPath": "/mnt/data/Repositories/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj",
+        "projectPath": "/home/ppljc/omstu-works-4/ООП/lab_6/lab_6/lab_6.csproj",
         "packagesPath": "/home/ppljc/.nuget/packages/",
-        "outputPath": "/mnt/data/Repositories/omstu-works-4/ООП/lab_6/lab_6/obj/",
+        "outputPath": "/home/ppljc/omstu-works-4/ООП/lab_6/lab_6/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ppljc/.nuget/NuGet/NuGet.Config"
