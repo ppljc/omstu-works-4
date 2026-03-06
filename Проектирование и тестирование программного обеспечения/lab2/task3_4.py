@@ -15,25 +15,35 @@ def task3_4() -> None:
         print(substring)
 
 
-def blocks_input() -> list[list]:
+def blocks_input(file_path: str = "task3_4.txt") -> list[list]:
     """
     Function to enter input blocks
+    :param file_path: Path to the input file
     :return: List with blocks
     """
     blocks = []
     block = []
 
-    while True:
-        if len(block) == 2:
-            blocks.append(tuple(block))
-            block = []
+    with open(file_path, 'r', encoding='utf-8') as f:
+        lines = (line.strip() for line in f)
 
-        word = input()
+        try:
+            while True:
+                try:
+                    if len(block) == 2:
+                        blocks.append(tuple(block))
+                        block = []
 
-        if word == '':
-            break
+                    word = next(lines)
 
-        block.append(word)
+                    if word == '':
+                        break
+
+                    block.append(word)
+                except StopIteration:
+                    break
+        except StopIteration:
+            pass
 
     return blocks
 
