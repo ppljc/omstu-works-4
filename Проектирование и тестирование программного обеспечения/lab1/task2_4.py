@@ -3,7 +3,7 @@ def task2_4() -> None:
     Function to calculate cards desk after given tricks
     :return: None
     """
-    print('Входные данные:')
+    print('Входные данные из файла')
     blocks = blocks_input()
 
     print('Выходные данные:')
@@ -26,33 +26,85 @@ def calculate(combinations, tricks_indexes):
     return desk
 
 
-def blocks_input() -> list:
+# def blocks_input() -> list:
+#     """
+#     Function to enter input blocks
+#     :return: List with blocks
+#     """
+#     blocks_amount = int(input())  # blocks amount
+#     _space = input()  # space
+#     blocks = []
+#
+#     for _block in range(blocks_amount):
+#         n = int(input())  # combinations amount
+#         combinations = []  # list of combinations where was a trick
+#
+#         for i in range(n):  # combinations enter
+#             combination = input()
+#             combinations.append([int(i) - 1 for i in combination.split(' ')])  # turn card numbers to massive indexes (i - 1)
+#
+#         tricks = []  # order of tricks indexes
+#
+#         while True:
+#             trick_index = input()
+#             if trick_index == '':  # on blank line - stop entering
+#                 break
+#
+#             tricks.append(int(trick_index) - 1)  # turn trick indexes to massive indexes (i - 1)
+#
+#         blocks.append((combinations, tricks))
+#
+#     return blocks
+
+
+def blocks_input(file_path: str = "task2_4.txt") -> list:
     """
-    Function to enter input blocks
+    Function to read input blocks from a file
+    :param file_path: Path to the input file
     :return: List with blocks
     """
-    blocks_amount = int(input())  # blocks amount
-    _space = input()  # space
     blocks = []
 
-    for _block in range(blocks_amount):
-        n = int(input())  # combinations amount
-        combinations = []  # list of combinations where was a trick
+    with open(file_path, 'r', encoding='utf-8') as f:
+        # Создаем итератор, чтобы удобно брать строки по одной
+        lines = (line.strip() for line in f)
 
-        for i in range(n):  # combinations enter
-            combination = input()
-            combinations.append([int(i) - 1 for i in combination.split(' ')])  # turn card numbers to massive indexes (i - 1)
+        try:
+            line = next(lines)
+            if not line:  # Пропуск возможных начальных пустых строк
+                line = next(lines)
 
-        tricks = []  # order of tricks indexes
+            blocks_amount = int(line)
 
-        while True:
-            trick_index = input()
-            if trick_index == '':  # on blank line - stop entering
-                break
+            for _ in range(blocks_amount):
+                # Пропускаем пустую строку перед блоком, если она есть
+                n_line = next(lines)
+                while not n_line:
+                    n_line = next(lines)
 
-            tricks.append(int(trick_index) - 1)  # turn trick indexes to massive indexes (i - 1)
+                n = int(n_line)
+                combinations = []
 
-        blocks.append((combinations, tricks))
+                # Читаем N комбинаций
+                for _ in range(n):
+                    combination = next(lines)
+                    combinations.append([int(i) - 1 for i in combination.split()])
+
+                tricks = []
+                # Читаем индексы трюков до следующей пустой строки или конца файла
+                while True:
+                    try:
+                        trick_line = next(lines)
+                        if trick_line == '':  # Пустая строка — признак конца блока трюков
+                            break
+                        tricks.append(int(trick_line) - 1)
+                    except StopIteration:
+                        break  # Конец файла
+
+                blocks.append((combinations, tricks))
+
+        except StopIteration:
+            pass  # Файл закончился раньше ожидаемого
 
     return blocks
 

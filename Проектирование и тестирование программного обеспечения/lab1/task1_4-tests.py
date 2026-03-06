@@ -326,6 +326,5 @@ def test_check_votes_equal(votes, expected):
     )
 ])
 def test_calculate_votes(people, votes, expected):
-    # Используем копии, так как функция рекурсивная и может мутировать словари
     res = calculate_votes(copy.deepcopy(people), copy.deepcopy(votes))
     assert sorted(res) == sorted(expected)
