@@ -1,51 +1,65 @@
 def task4_4() -> None:
-    stack = [3, 1, 2, 5, 4]
-    pancake = 0
+    stack = [1, 2, 4, 3, 5]
+    current_max = 0
 
-    for i in range(len(stack)):
-        pancake, pancake_index = find_next_max(stack, pancake)
-        if pancake == current_max:
-            stack = flip(stack, i)
+    while stack != stack.sort():
+        current_max, current_max_index = find_next_max(stack, current_max) # find next max
 
-            flip_pancake_index = find_where_flip(stack, pancake)
+        stack = flip(stack, current_max_index)
 
-            stack = flip(stack, flip_pancake_index)
+        flip_pancake_index = find_where_flip(stack, current_max)
 
-            current_max = find_next_max(stack, current_max)
+        stack = flip(stack, flip_pancake_index)
 
-            print(stack)
+        print(stack)
 
 
-def blocks_input() -> list[list]:
+def blocks_input(file_path: str = "task4_4.txt") -> list[list]:
     """
     Function to enter input blocks
     :return: List with blocks
     """
     blocks = []
 
-    while True:
-        stack = input()
+    with open(file_path, 'r', encoding='utf-8') as f:
+        lines = (line.strip() for line in f)
 
-        if stack == '':
-            break
+        try:
+            while True:
+                try:
+                    stack = next(lines)
 
-        blocks.append([int(i) for i in stack.split(' ')])
+                    if stack == '':
+                        break
+
+                    blocks.append([int(i) for i in stack.split(' ')])
+                except StopIteration:
+                    break
+        except StopIteration:
+            pass
 
     return blocks
 
 
-def find_next_max(stack: list, current_max: int) -> int:
+def find_next_max(stack: list, current_max: int) -> tuple[int, int]:
     if current_max == 0:
-        return max(stack)
+        return find_max(stack)
 
     copy_stack = stack.copy()
     for i in range(len(stack)):
         pancake = stack[i]
         if pancake >= current_max:
-            copy_stack.remove(pancake)
+            copy_stack[i] = -1
 
-    new_max = max(copy_stack)
-    return new_max
+    return find_max(copy_stack)
+
+
+def find_max(stack: list) -> tuple[int, int]:
+    current_max = max(stack)
+
+    for i in range(len(stack)):
+        if current_max == stack[i]:
+            return current_max, i
 
 
 def find_where_flip(stack: list, current_max: int):
