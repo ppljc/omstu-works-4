@@ -2,7 +2,7 @@ using System.Text;
 
 namespace lab_6;
 
-public class GameConsole : IConsole, IHack
+public class GameConsole : IConsole, IHack, ICloneable
 {
     private EventHandler<string>? _userAdded;
     private EventHandler? _driveConnected;
@@ -222,5 +222,12 @@ public class GameConsole : IConsole, IHack
         {
             Console.WriteLine($"{i}. {InstalledGames[i]}");
         }
+    }
+
+    public object Clone()
+    {
+        var clone = this.MemberwiseClone();
+
+        return clone;
     }
 }
