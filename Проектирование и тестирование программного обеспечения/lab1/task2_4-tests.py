@@ -2,11 +2,6 @@ import pytest
 from task2_4 import *
 
 
-@pytest.fixture
-def standard_deck():
-    return list(range(52))
-
-
 @pytest.mark.parametrize("combinations, tricks, expected_indices", [
     # Тест 1: Две комбинации, обе выполняются
     (

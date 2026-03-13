@@ -1,33 +1,66 @@
 def task4_4() -> None:
-    stack = [1, 2, 4, 3, 5]
+    print('Входные данные:')
+    blocks = blocks_input()
+
+    print('Выходные данные:')
+    for stack in blocks:
+        sorted_stack, flips = sort_stack(stack)
+
+        print(f"FINAL: sorted_stack={sorted_stack}, flips={flips}")
+
+
+def sort_stack(stack: list) -> tuple[list, list]:
+    flips = []
     sorted_stack = stack.copy()
     sorted_stack.sort()
+    sorted_stack_reverse = stack.copy()
+    sorted_stack_reverse.sort(reverse=True)
     current_max = 0
 
     for i in range(10):
         print('START')
-        print(f"stack before={stack}")
+        print(f"stack before={stack}, sorted stack={sorted_stack}")
 
-        current_max, current_max_index = find_next_max(stack, current_max) # find next max
+        if stack == sorted_stack:
+            print('STOP')
+            break
+        elif stack == sorted_stack_reverse:
+            print('STOP REVERSED')
+            flips.append(1)
+            break
+
+        current_max, current_max_index = find_next_max(stack, current_max)  # find next max
         print(f"current_max={current_max}, current_max_index={current_max_index}")
 
         stack = flip(stack, current_max_index)
         print(f"stack after 1={stack}")
+        flips.append(current_max_index + 1)
 
         flip_pancake_index = find_where_flip(stack, current_max)
         print(f"flip_pancake_index={flip_pancake_index}")
 
         if stack == sorted_stack:
-            print('STOPPP')
+            print('STOP')
+            break
+        elif stack == sorted_stack_reverse:
+            print('STOP REVERSED')
+            flips.append(1)
             break
 
         stack = flip(stack, flip_pancake_index)
+        flips.append(flip_pancake_index + 1)
         print(f"stack after 2={stack}")
         print('END')
 
+        if stack == sorted_stack:
+            print('STOP')
+            break
+        elif stack == sorted_stack_reverse:
+            print('STOP REVERSED')
+            flips.append(1)
+            break
 
-def sort_stack(stack: list):
-
+    return stack, flips
 
 
 def blocks_input(file_path: str = "task4_4.txt") -> list[list]:

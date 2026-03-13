@@ -273,7 +273,7 @@ def test_check_votes_equal(votes, expected):
 
 
 @pytest.mark.parametrize("people, votes, expected", [
-    # Тест 1: Ваш кейс (John Doe побеждает после перераспределения)
+    # Тест 1: Из примера
     # Кандидаты: 0: John Doe, 1: Jane Smith, 2: Jane Austen
     (
         [
