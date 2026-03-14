@@ -60,8 +60,8 @@ def found_matching_substring(word_a: str, word_b: str) -> str:
     for letter in word_a:  # for letter in first word
         if letter in word_b and not(word_a.count(letter) == word_b.count(letter) == result.count(letter)):  # if letter from first word in second word and not in matching letters
             result += letter * min(word_a.count(letter), word_b.count(letter))  # add to matching letters all entering of current letter
-    # sort
-    return result
+
+    return str.join('', sorted(list(result)))
 
 
 if __name__ == '__main__':
