@@ -6,6 +6,18 @@ class Program
     {
         var console = GameConsole.Generate();
         Console.WriteLine(
+            $"Console: Model - {console.Model}, Processor - {console.Processor}, MediaType - {console.Media}, RAM - {console.RAMSizeGb}GB, HDD - {console.HardDriveSizeGb}GB, Games - {console.InstalledGames.Count}, Accounts - {console.Accounts.Count}.");
+
+        var clonedConsole = (GameConsole)console.Clone();
+        clonedConsole.InstallGame("Everlasting Summer");
+        Console.WriteLine(
+            $"Console: Model - {clonedConsole.Model}, Processor - {clonedConsole.Processor}, MediaType - {clonedConsole.Media}, RAM - {clonedConsole.RAMSizeGb}GB, HDD - {clonedConsole.HardDriveSizeGb}GB, Games - {clonedConsole.InstalledGames.Count}, Accounts - {clonedConsole.Accounts.Count}.");
+
+    }
+    static void Main_lab7(string[] args)
+    {
+        var console = GameConsole.Generate();
+        Console.WriteLine(
                 $"Console: Model - {console.Model}, Processor - {console.Processor}, MediaType - {console.Media}, RAM - {console.RAMSizeGb}GB, HDD - {console.HardDriveSizeGb}GB, Games - {console.InstalledGames.Count}, Accounts - {console.Accounts.Count}.");
         
         Console.WriteLine("\nConsole accounts before:");

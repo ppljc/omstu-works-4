@@ -1,4 +1,4 @@
-namespace lab8_faculties;
+namespace lab8_2;
 
 public class Program
 {

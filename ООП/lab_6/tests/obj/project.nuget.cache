@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UzOlx7fEQmE=",
+  "dgSpecHash": "H/KTaGI9M+0=",
   "success": true,
-  "projectFilePath": "/home/ppljc/omstu-works-4/ООП/lab_6/tests/tests.csproj",
+  "projectFilePath": "/mnt/data/Repositories/omstu-works-4/ООП/lab_6/tests/tests.csproj",
   "expectedPackageFiles": [
     "/home/ppljc/.nuget/packages/coverlet.collector/6.0.4/coverlet.collector.6.0.4.nupkg.sha512",
     "/home/ppljc/.nuget/packages/microsoft.applicationinsights/2.22.0/microsoft.applicationinsights.2.22.0.nupkg.sha512",
@@ -19,7 +19,7 @@
     "/home/ppljc/.nuget/packages/nunit/4.3.2/nunit.4.3.2.nupkg.sha512",
     "/home/ppljc/.nuget/packages/nunit.analyzers/4.7.0/nunit.analyzers.4.7.0.nupkg.sha512",
     "/home/ppljc/.nuget/packages/nunit3testadapter/5.0.0/nunit3testadapter.5.0.0.nupkg.sha512",
-    "/home/ppljc/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.3/microsoft.aspnetcore.app.ref.10.0.3.nupkg.sha512"
+    "/home/ppljc/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.4/microsoft.aspnetcore.app.ref.10.0.4.nupkg.sha512"
   ],
   "logs": []
 }

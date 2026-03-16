@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ppljc/omstu-works-4/ООП/lab8_2/lab8_2/lab8_2.csproj",
+      "projectUniqueName": "/mnt/data/Repositories/omstu-works-4/ООП/lab8_2/lab8_2/lab8_2.csproj",
       "projectName": "lab8_2",
-      "projectPath": "/home/ppljc/omstu-works-4/ООП/lab8_2/lab8_2/lab8_2.csproj",
+      "projectPath": "/mnt/data/Repositories/omstu-works-4/ООП/lab8_2/lab8_2/lab8_2.csproj",
       "packagesPath": "/home/ppljc/.nuget/packages/",
-      "outputPath": "/home/ppljc/omstu-works-4/ООП/lab8_2/lab8_2/obj/",
+      "outputPath": "/mnt/data/Repositories/omstu-works-4/ООП/lab8_2/lab8_2/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ppljc/.nuget/NuGet/NuGet.Config"
@@ -63,7 +63,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[10.0.3, 10.0.3]"
+            "version": "[10.0.4, 10.0.4]"
           }
         ],
         "frameworkReferences": {
@@ -71,7 +71,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.103/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

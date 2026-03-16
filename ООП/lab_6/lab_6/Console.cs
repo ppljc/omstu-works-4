@@ -68,6 +68,20 @@ public class GameConsole : IConsole, IHack, ICloneable
         RAMSizeGb = ram;
         HardDriveSizeGb = storage;
     }
+    
+    private GameConsole(GameConsole other) // constructor for cloning
+    {
+        Processor = other.Processor;
+        CpuClockMHz = other.CpuClockMHz;
+        ManufacturerName = other.ManufacturerName;
+        Media = other.Media;
+        Model = other.Model;
+        RAMSizeGb = other.RAMSizeGb;
+        HardDriveSizeGb = other.HardDriveSizeGb;
+
+        _installedGames = new List<string>(other._installedGames);
+        _accounts = new List<string>(other._accounts);
+    }
 
     private static readonly Random Random = new Random();
 
@@ -226,8 +240,6 @@ public class GameConsole : IConsole, IHack, ICloneable
 
     public object Clone()
     {
-        var clone = this.MemberwiseClone();
-
-        return clone;
+        return new GameConsole(this);
     }
 }
