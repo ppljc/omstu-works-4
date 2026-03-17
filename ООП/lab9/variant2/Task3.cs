@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace lab5;
+namespace lab9_2;
 
 public class Task3
 {

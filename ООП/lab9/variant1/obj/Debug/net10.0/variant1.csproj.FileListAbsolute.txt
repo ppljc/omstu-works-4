@@ -1,0 +1,15 @@
+/home/ppljc/omstu-works-4/ООП/lab9/variant1/bin/Debug/net10.0/variant1
+/home/ppljc/omstu-works-4/ООП/lab9/variant1/bin/Debug/net10.0/variant1.deps.json
+/home/ppljc/omstu-works-4/ООП/lab9/variant1/bin/Debug/net10.0/variant1.runtimeconfig.json
+/home/ppljc/omstu-works-4/ООП/lab9/variant1/bin/Debug/net10.0/variant1.dll
+/home/ppljc/omstu-works-4/ООП/lab9/variant1/bin/Debug/net10.0/variant1.pdb
+/home/ppljc/omstu-works-4/ООП/lab9/variant1/obj/Debug/net10.0/variant1.GeneratedMSBuildEditorConfig.editorconfig
+/home/ppljc/omstu-works-4/ООП/lab9/variant1/obj/Debug/net10.0/variant1.AssemblyInfoInputs.cache
+/home/ppljc/omstu-works-4/ООП/lab9/variant1/obj/Debug/net10.0/variant1.AssemblyInfo.cs
+/home/ppljc/omstu-works-4/ООП/lab9/variant1/obj/Debug/net10.0/variant1.csproj.CoreCompileInputs.cache
+/home/ppljc/omstu-works-4/ООП/lab9/variant1/obj/Debug/net10.0/variant1.sourcelink.json
+/home/ppljc/omstu-works-4/ООП/lab9/variant1/obj/Debug/net10.0/variant1.dll
+/home/ppljc/omstu-works-4/ООП/lab9/variant1/obj/Debug/net10.0/refint/variant1.dll
+/home/ppljc/omstu-works-4/ООП/lab9/variant1/obj/Debug/net10.0/variant1.pdb
+/home/ppljc/omstu-works-4/ООП/lab9/variant1/obj/Debug/net10.0/variant1.genruntimeconfig.cache
+/home/ppljc/omstu-works-4/ООП/lab9/variant1/obj/Debug/net10.0/ref/variant1.dll

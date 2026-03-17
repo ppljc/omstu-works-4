@@ -1,5 +1,3 @@
-using System.Reflection;
-
 namespace lab_8;
 
 using lab8_lib;
@@ -16,6 +14,7 @@ public class Program
         
         Console.WriteLine($"\n{type.FullName}"); // инфа о классе
         
+        // поля
         Console.WriteLine("\nFields before:");
         foreach (var field in  type.GetFields())
         {
@@ -28,6 +27,7 @@ public class Program
         
         Console.WriteLine($"\nField after:\n{fieldAddress?.FieldType.Name} {fieldAddress?.Name} {fieldAddress?.GetValue(building)}");
         
+        // свойства
         Console.WriteLine("\nProperties before:");
         foreach (var property in  type.GetProperties())
         {
@@ -40,6 +40,7 @@ public class Program
         
         Console.WriteLine($"\nProperty after:\n{propertyName?.PropertyType.Name} {propertyName?.Name} {propertyName?.GetValue(building)}");
         
+        // методы
         Console.WriteLine("\nMethods:");
         foreach (var method in  type.GetMethods())
         {

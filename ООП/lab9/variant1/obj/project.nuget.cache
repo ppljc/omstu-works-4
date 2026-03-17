@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "z3gNNPzhAmA=",
+  "dgSpecHash": "ZNE2oMS/DiM=",
   "success": true,
-  "projectFilePath": "/mnt/data/Repositories/omstu-works-4/ООП/lab9/variant1/variant1.csproj",
+  "projectFilePath": "/home/ppljc/omstu-works-4/ООП/lab9/variant1/variant1.csproj",
   "expectedPackageFiles": [
     "/home/ppljc/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.4/microsoft.aspnetcore.app.ref.10.0.4.nupkg.sha512"
   ],

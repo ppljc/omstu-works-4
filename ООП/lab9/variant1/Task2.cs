@@ -30,7 +30,14 @@ public class Task2
                     {
                         subTasks.Add(Task.Run(() =>
                         {
-                            TraverseDirectory(dir, docExtensions, docs);
+                            try
+                            {
+                                TraverseDirectory(dir, docExtensions, docs);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"Ошибка при обработке папки {dir}: {ex.Message}");
+                            }
                         }));
                     }
 
