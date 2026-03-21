@@ -3,7 +3,7 @@ import math
 
 def task3_4() -> None:
     """
-    Function to find matching letters in two words
+    Function to find power of 2
     :return: None
     """
     print('Входные данные:')
@@ -44,7 +44,12 @@ def blocks_input(file_path: str = "task5_4.txt") -> list[int]:
     return blocks
 
 
-def calculate(number: int):
+def calculate(number: int) -> int | str:
+    """
+    Function to determine power of 2 which startswith given number
+    :param number: Decimal
+    :return: Power of 2 or string 'no power of 2'
+    """
     start_digits = len(str(number)) + 1
 
     while start_digits < 11:
