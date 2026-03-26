@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "4lDkXP5ufko=",
+  "success": true,
+  "projectFilePath": "/home/ppljc/omstu-works-4/ООП/lab10/lab10/lab10.csproj",
+  "expectedPackageFiles": [
+    "/home/ppljc/.nuget/packages/naudio/2.3.0/naudio.2.3.0.nupkg.sha512",
+    "/home/ppljc/.nuget/packages/naudio.asio/2.3.0/naudio.asio.2.3.0.nupkg.sha512",
+    "/home/ppljc/.nuget/packages/naudio.core/2.3.0/naudio.core.2.3.0.nupkg.sha512",
+    "/home/ppljc/.nuget/packages/naudio.lame/2.1.0/naudio.lame.2.1.0.nupkg.sha512",
+    "/home/ppljc/.nuget/packages/naudio.midi/2.3.0/naudio.midi.2.3.0.nupkg.sha512",
+    "/home/ppljc/.nuget/packages/naudio.wasapi/2.3.0/naudio.wasapi.2.3.0.nupkg.sha512",
+    "/home/ppljc/.nuget/packages/naudio.winmm/2.3.0/naudio.winmm.2.3.0.nupkg.sha512",
+    "/home/ppljc/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.4/microsoft.aspnetcore.app.ref.10.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}

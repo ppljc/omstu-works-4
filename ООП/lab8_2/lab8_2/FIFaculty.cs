@@ -1,3 +1,5 @@
+using System;
+
 namespace lab8_2;
 
 public sealed class FIFaculty : FacultyBase

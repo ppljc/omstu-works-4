@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5gexXFx0Lig=",
+  "dgSpecHash": "4vgZdmSPJKE=",
   "success": true,
   "projectFilePath": "/home/ppljc/omstu-works-4/ООП/lab_7/tests/tests.csproj",
   "expectedPackageFiles": [
@@ -19,7 +19,7 @@
     "/home/ppljc/.nuget/packages/nunit/4.5.0/nunit.4.5.0.nupkg.sha512",
     "/home/ppljc/.nuget/packages/nunit.analyzers/4.7.0/nunit.analyzers.4.7.0.nupkg.sha512",
     "/home/ppljc/.nuget/packages/nunit3testadapter/5.0.0/nunit3testadapter.5.0.0.nupkg.sha512",
-    "/home/ppljc/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.3/microsoft.aspnetcore.app.ref.10.0.3.nupkg.sha512"
+    "/home/ppljc/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.4/microsoft.aspnetcore.app.ref.10.0.4.nupkg.sha512"
   ],
   "logs": []
 }

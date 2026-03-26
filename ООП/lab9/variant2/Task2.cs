@@ -9,7 +9,31 @@ public class Task2
         ConcurrentBag<string> pictures = [];
         string[] pictureExtensions = [".jpg", ".jpeg", ".png", ".bmp", ".gif", ".tiff", ".webp"];
 
-        List<Task> tasks = [];
+        List<Thread> threads = [];
+
+        foreach (var drive in DriveInfo.GetDrives())
+        {
+            Console.WriteLine(drive);
+            try
+            {
+                var root = drive.RootDirectory;
+
+                var rootDirs = root.GetDirectories();
+
+                foreach (var dir in rootDirs)
+                {
+                    Console.WriteLine(dir);
+                }
+            }
+            catch
+            {
+                continue;
+            }
+        }
+
+        // Console.ReadKey();
+
+        List<DirectoryInfo> dirs = [];
         
         foreach (var drive in DriveInfo.GetDrives())
         {
@@ -18,17 +42,22 @@ public class Task2
 
             var root = drive.RootDirectory;
             
-            tasks.Add(Task.Run(() =>
+            dirs.Add(root);
+            
+            var thread = new Thread(() =>
             {
                 try
                 {
                     var rootDirs = root.GetDirectories();
 
-                    List<Task> subTasks = [];
+                    List<Thread> subThreads = [];
 
                     foreach (var dir in rootDirs)
                     {
-                        subTasks.Add(Task.Run(() =>
+                        if (dirs.Contains(dir))
+                            continue;
+                        
+                        var subThread = new Thread(() =>
                         {
                             try
                             {
@@ -38,19 +67,31 @@ public class Task2
                             {
                                 Console.WriteLine($"Ошибка при обработке папки {dir}: {ex.Message}");
                             }
-                        }));
+                        });
+                        
+                        subThreads.Add(subThread);
+                        subThread.Start();
                     }
 
-                    Task.WaitAll(subTasks.ToArray());
+                    foreach (var subThread in subThreads)
+                    {
+                        subThread.Join();
+                    }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Ошибка при обработке диска {root}: {ex.Message}");
                 }
-            }));
+            });
+            
+            threads.Add(thread);
+            thread.Start();
         }
 
-        Task.WaitAll(tasks.ToArray());
+        foreach (var thread in threads)
+        {
+            thread.Join();
+        }
 
         var output = new FileInfo("pictures.txt");
         using (var writer = new StreamWriter(output.OpenWrite()))
