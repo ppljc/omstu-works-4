@@ -6,17 +6,21 @@ def task6_4():
 
     print('Выходные данные:')
     for n, d in blocks:
-        if n % 2 != 0 or n < 2 or n > 300:
-            print(0)
-            continue
+        result = calculate(n, d, exactly)
 
-        m = n // 2
+        print(result)
 
-        if m > 150 or d < 1 or d > 150:
-            print(0)
-            continue
 
-        print(exactly[m][d])
+def calculate(n, d, exactly):
+    if n % 2 != 0 or n < 2 or n > 300:
+        return 0
+
+    m = n // 2
+
+    if m > 150 or d < 1 or d > 150:
+        return 0
+
+    return exactly[m][d]
 
 
 def blocks_input(file_path: str = "task6_4.txt") -> list[list]:
