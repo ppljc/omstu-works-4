@@ -1,7 +1,7 @@
 import math
 
 
-def task3_4() -> None:
+def task5_4() -> None:
     """
     Function to find power of 2
     :return: None
@@ -77,4 +77,4 @@ def calculate(number: int) -> int | str:
 
 
 if __name__ == '__main__':
-    task3_4()
+    task5_4()
