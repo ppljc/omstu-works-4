@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/mnt/data/Repositories/omstu-works-4/ООП/lab9/variant1/variant1.csproj": {}
+    "/home/ppljc/omstu-works-4/ООП/lab9/variant1/variant1.csproj": {}
   },
   "projects": {
-    "/mnt/data/Repositories/omstu-works-4/ООП/lab9/variant1/variant1.csproj": {
+    "/home/ppljc/omstu-works-4/ООП/lab9/variant1/variant1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/mnt/data/Repositories/omstu-works-4/ООП/lab9/variant1/variant1.csproj",
+        "projectUniqueName": "/home/ppljc/omstu-works-4/ООП/lab9/variant1/variant1.csproj",
         "projectName": "variant1",
-        "projectPath": "/mnt/data/Repositories/omstu-works-4/ООП/lab9/variant1/variant1.csproj",
+        "projectPath": "/home/ppljc/omstu-works-4/ООП/lab9/variant1/variant1.csproj",
         "packagesPath": "/home/ppljc/.nuget/packages/",
-        "outputPath": "/mnt/data/Repositories/omstu-works-4/ООП/lab9/variant1/obj/",
+        "outputPath": "/home/ppljc/omstu-works-4/ООП/lab9/variant1/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ppljc/.nuget/NuGet/NuGet.Config"

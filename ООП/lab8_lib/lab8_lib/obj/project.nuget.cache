@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ZJutWIzeI5w=",
+  "dgSpecHash": "8wqjoSB17hQ=",
   "success": true,
   "projectFilePath": "/home/ppljc/omstu-works-4/ООП/lab8_lib/lab8_lib/lab8_lib.csproj",
   "expectedPackageFiles": [
-    "/home/ppljc/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.3/microsoft.aspnetcore.app.ref.10.0.3.nupkg.sha512"
+    "/home/ppljc/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.4/microsoft.aspnetcore.app.ref.10.0.4.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,25 +1,96 @@
-﻿namespace lab5;
+﻿using System.Collections.Concurrent;
+
+namespace lab9_2;
 
 public class Task2
 {
     public void Execute()
     {
-        List<string> pictures = [];
+        ConcurrentBag<string> pictures = [];
         string[] pictureExtensions = [".jpg", ".jpeg", ".png", ".bmp", ".gif", ".tiff", ".webp"];
 
+        List<Thread> threads = [];
+
+        foreach (var drive in DriveInfo.GetDrives())
+        {
+            Console.WriteLine(drive);
+            try
+            {
+                var root = drive.RootDirectory;
+
+                var rootDirs = root.GetDirectories();
+
+                foreach (var dir in rootDirs)
+                {
+                    Console.WriteLine(dir);
+                }
+            }
+            catch
+            {
+                continue;
+            }
+        }
+
+        // Console.ReadKey();
+
+        List<DirectoryInfo> dirs = [];
+        
         foreach (var drive in DriveInfo.GetDrives())
         {
             if (!drive.IsReady)
                 continue;
 
-            try
+            var root = drive.RootDirectory;
+            
+            dirs.Add(root);
+            
+            var thread = new Thread(() =>
             {
-                TraverseDirectory(drive.RootDirectory, pictureExtensions, pictures);
-            }
-            catch
-            {
-                // ignored
-            }
+                try
+                {
+                    var rootDirs = root.GetDirectories();
+
+                    List<Thread> subThreads = [];
+
+                    foreach (var dir in rootDirs)
+                    {
+                        if (dirs.Contains(dir))
+                            continue;
+                        
+                        var subThread = new Thread(() =>
+                        {
+                            try
+                            {
+                                TraverseDirectory(dir, pictureExtensions, pictures);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"Ошибка при обработке папки {dir}: {ex.Message}");
+                            }
+                        });
+                        
+                        subThreads.Add(subThread);
+                        subThread.Start();
+                    }
+
+                    foreach (var subThread in subThreads)
+                    {
+                        subThread.Join();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Ошибка при обработке диска {root}: {ex.Message}");
+                }
+            });
+            
+            threads.Add(thread);
+            thread.Start();
+        }
+
+        foreach (var thread in threads)
+        {
+            thread.Join();
         }
 
         var output = new FileInfo("pictures.txt");
@@ -30,7 +101,7 @@ public class Task2
         }
     }
 
-    private void TraverseDirectory(DirectoryInfo dir, string[] exts, List<string> buffer)
+    private void TraverseDirectory(DirectoryInfo dir, string[] exts, ConcurrentBag<string> buffer)
     {
         FileInfo[] files;
         DirectoryInfo[] subdirs;
@@ -50,6 +121,7 @@ public class Task2
             if (Array.Exists(exts, e => file.Extension.Equals(e, StringComparison.OrdinalIgnoreCase)))
             {
                 buffer.Add(file.FullName);
+                Console.WriteLine(file.FullName);
             }
         }
 

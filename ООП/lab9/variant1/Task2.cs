@@ -9,7 +9,9 @@ public class Task2
         ConcurrentBag<string> docs = [];
         string[] docExtensions = [".doc", ".docx", ".pdf", ".txt", ".rtf", ".xls", ".xlsx", ".ppt", ".pptx"];
 
-        List<Task> tasks = [];
+        List<Thread> threads = [];
+
+        List<String> dirs = [];
 
         foreach (var drive in DriveInfo.GetDrives())
         {
@@ -17,33 +19,57 @@ public class Task2
                 continue;
 
             var root = drive.RootDirectory.FullName;
+            
+            dirs.Add(root);
 
-            tasks.Add(Task.Run(() =>
+            var thread = new Thread(() =>
             {
                 try
                 {
                     var rootDirs = Directory.GetDirectories(root);
 
-                    List<Task> subTasks = [];
+                    List<Thread> subThreads = [];
 
                     foreach (var dir in rootDirs)
                     {
-                        subTasks.Add(Task.Run(() =>
+                        if (dirs.Contains(dir))
+                            continue;
+                        
+                        var subThread = new Thread(() =>
                         {
-                            TraverseDirectory(dir, docExtensions, docs);
-                        }));
+                            try
+                            {
+                                TraverseDirectory(dir, docExtensions, docs);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"Ошибка при обработке папки {dir}: {ex.Message}");
+                            }
+                        });
+
+                        subThreads.Add(subThread);
+                        subThread.Start();
                     }
 
-                    Task.WaitAll(subTasks.ToArray());
+                    foreach (var subThread in subThreads)
+                    {
+                        subThread.Join();
+                    }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Ошибка при обработке диска {root}: {ex.Message}");
                 }
-            }));
+            });
+            
+            threads.Add(thread);
+            thread.Start();
         }
 
-        Task.WaitAll(tasks.ToArray());
+        foreach (var thread in threads)
+        {
+            thread.Join();
+        }
 
         File.WriteAllLines("docs.txt", docs);
     }
