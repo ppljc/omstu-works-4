@@ -19,7 +19,6 @@ def blocks_input(file_path: str = "task7_4.txt") -> list:
     blocks = []
 
     with open(file_path, 'r', encoding='utf-8') as f:
-        # Создаем генератор очищенных строк
         lines = (line.strip() for line in f)
 
         try:

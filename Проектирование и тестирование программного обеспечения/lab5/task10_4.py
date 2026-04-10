@@ -17,7 +17,7 @@ def min_cut_cost(length, cuts):
 
 
 def solve():
-    with open("task8_4.txt", "r") as f:
+    with open("task10_4.txt", "r") as f:
         while True:
             line = f.readline()
             if not line:
