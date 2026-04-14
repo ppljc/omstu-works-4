@@ -34,7 +34,7 @@ public class Audio
 
     public void Save(string outputDirectory)
     {
-        Directory.CreateDirectory(outputDirectory);
+        // Directory.CreateDirectory(outputDirectory);
         var targetPath = Path.Combine(outputDirectory, FileName);
         File.WriteAllBytes(targetPath, Data);
     }
