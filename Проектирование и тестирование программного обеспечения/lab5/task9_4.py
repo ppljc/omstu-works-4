@@ -1,96 +1,80 @@
-from typing import List, Tuple
-
-FACE_NAMES = ["front", "back", "left", "right", "top", "bottom"]
 OPPOSITE = [1, 0, 3, 2, 5, 4]
+FACE_NAMES = ["front", "back", "left", "right", "top", "bottom"]
 
 
-def read_input(path: str = "task9_4.txt") -> str:
+def solve_tower(n, cubes):
+    dp = [[1] * 6 for _ in range(n)]
+    parent = [[None] * 6 for _ in range(n)]
+
+    for i in range(n - 1, -1, -1):
+        for f in range(6):
+            bottom_color_i = cubes[i][OPPOSITE[f]]
+
+            for j in range(i + 1, n):
+                for f_below in range(6):
+                    if cubes[j][f_below] == bottom_color_i:
+                        if 1 + dp[j][f_below] > dp[i][f]:
+                            dp[i][f] = 1 + dp[j][f_below]
+                            parent[i][f] = (j, f_below)
+
+    max_h = 0
+    start_node = None
+    for i in range(n):
+        for f in range(6):
+            if dp[i][f] > max_h:
+                max_h = dp[i][f]
+                start_node = (i, f)
+
+    tower_result = []
+    curr = start_node
+    while curr:
+        idx, f_idx = curr
+        tower_result.append((idx + 1, FACE_NAMES[f_idx]))
+        curr = parent[idx][f_idx]
+
+    return max_h, tower_result
+
+
+def main():
+    input_file = 'task9_4.txt'
+
     try:
-        with open(path, "r", encoding="utf-8") as f:
-            return f.read()
+        with open(input_file, 'r') as f:
+            data = f.read().split()
     except FileNotFoundError:
-        return ""
+        return
 
+    if not data:
+        return
 
-def solve(data: str) -> str:
-    nums = list(map(int, data.split()))
-    p = 0
-    case_no = 1
-    blocks = []
+    ptr = 0
+    case_num = 1
 
-    while p < len(nums):
-        n = nums[p]
-        p += 1
+    while ptr < len(data):
+        n = int(data[ptr])
+        ptr += 1
+
         if n == 0:
             break
 
         cubes = []
         for _ in range(n):
-            cubes.append(nums[p:p + 6])
-            p += 6
+            faces = [int(x) for x in data[ptr: ptr + 6]]
+            cubes.append(faces)
+            ptr += 6
 
-        # Для каждого цвета верхней грани храним лучший уже обработанный state
-        best_state_by_color = [-1] * 101
+        max_height, tower = solve_tower(n, cubes)
 
-        # Хранилище всех состояний:
-        # length[s]  - длина башни, заканчивающейся этим состоянием
-        # prev[s]    - предыдущий state
-        # cube_id[s] - номер кубика во входе
-        # face_id[s] - какая грань была сверху
-        # top_color[s] - цвет верхней грани
-        length: List[int] = []
-        prev: List[int] = []
-        cube_id: List[int] = []
-        face_id: List[int] = []
-        top_color: List[int] = []
+        if case_num > 1:
+            print()  # Пустая строка между блоками
 
-        best_overall = -1
+        print(f"Case #{case_num}")
+        print(max_height)
+        for cube_id, face_name in tower:
+            print(f"{cube_id} {face_name}")
 
-        for i, colors in enumerate(cubes, start=1):
-            current_states = []
-
-            # Пробуем поставить кубик i каждой из 6 граней вверх
-            for f in range(6):
-                top_c = colors[f]
-                bottom_c = colors[OPPOSITE[f]]
-
-                prev_state = best_state_by_color[bottom_c]
-                cur_len = (length[prev_state] if prev_state != -1 else 0) + 1
-
-                sid = len(length)
-                length.append(cur_len)
-                prev.append(prev_state)
-                cube_id.append(i)
-                face_id.append(f)
-                top_color.append(top_c)
-
-                current_states.append(sid)
-
-                if best_overall == -1 or cur_len > length[best_overall]:
-                    best_overall = sid
-
-            # После обработки кубика обновляем лучшие состояния по цветам
-            for sid in current_states:
-                c = top_color[sid]
-                if best_state_by_color[c] == -1 or length[sid] > length[best_state_by_color[c]]:
-                    best_state_by_color[c] = sid
-
-        # Восстановление ответа
-        answer: List[Tuple[int, str]] = []
-        s = best_overall
-        while s != -1:
-            answer.append((cube_id[s], FACE_NAMES[face_id[s]]))
-            s = prev[s]
-        answer.reverse()
-
-        block = [f"Case #{case_no}", str(len(answer))]
-        block.extend(f"{idx} {face}" for idx, face in answer)
-        blocks.append("\n".join(block))
-
-        case_no += 1
-
-    return "\n\n".join(blocks)
+        case_num += 1
 
 
 if __name__ == "__main__":
-    print(solve(read_input()))
+    main()
