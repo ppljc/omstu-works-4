@@ -205,6 +205,85 @@
 					<QuantityColumn>
 					</QuantityColumn>
 				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1776142666250</Id>
+					<Name><![CDATA[ball1]]></Name>
+					<X>650</X><Y>550</Y>
+					<Label><X>-12</X><Y>-21</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[balls]]></PackageName>
+						<ClassName><![CDATA[Ball]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[balls]]></PackageName>
+							<ClassName><![CDATA[Ball]]></ClassName>
+							<ItemName><![CDATA[1503224850276]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[g]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[r]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[k]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[x0]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[200]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[y0]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[300]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[t0]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>XYZ</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<Id>1776142666248</Id>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
 			</EmbeddedObjects>
 
 			<Presentation>
@@ -760,6 +839,33 @@
 						<Link>ball.r</Link>
 					</ExtendedProperties>
 				</Control>
+				<Oval>
+					<Id>1776142757382</Id>
+					<Name><![CDATA[oval1]]></Name>
+					<X>320</X><Y>300</Y>
+					<Label><X>0</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[ball1.x]]></XCode>
+					<YCode><![CDATA[500 - ball1.y]]></YCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<RadiusX>40</RadiusX>
+					<RadiusXCode><![CDATA[ball1.r]]></RadiusXCode>
+					<RadiusY>30</RadiusY>
+					<RadiusYCode><![CDATA[ball.r]]></RadiusYCode>
+					<Rotation>0.0</Rotation>
+					<FillColor>-16711936</FillColor>
+					<FillColorCode><![CDATA[time() < ball1.t0 + 0.3 ? red : lime]]></FillColorCode>
+					<FillMaterial>null</FillMaterial>
+				</Oval>
 			</Presentation>
 
 				</Level>
@@ -908,7 +1014,7 @@
 					<Width>20</Width>
 					<Height>20</Height>
 						<Expression><![CDATA[0]]></Expression>
-						<InitialValue><![CDATA[0]]></InitialValue>
+						<InitialValue><![CDATA[uniform(-100, 100)]]></InitialValue>
 						<Color>-4073239</Color>
 					</Properties>
 				</Variable>
@@ -925,7 +1031,7 @@
 					<Width>20</Width>
 					<Height>20</Height>
 						<Expression><![CDATA[-g]]></Expression>
-						<InitialValue><![CDATA[0]]></InitialValue>
+						<InitialValue><![CDATA[uniform(-100, 100)]]></InitialValue>
 						<Color>-4073239</Color>
 					</Properties>
 				</Variable>
@@ -1161,7 +1267,7 @@
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="150" Height="90">
-						<FillColor/>
+						<FillColor>-10496</FillColor>
 					</Properties>
 				</StatechartElement>
 				<StatechartElement Class="EntryPoint" ParentState="ROOT_NODE">
@@ -1177,7 +1283,6 @@
 						<Point><X>0</X><Y>40</Y></Point>
 					</Points>
 					<Properties Target="1288356033844">
-						<Action><![CDATA[t0 = time();]]></Action>
 					</Properties>	
 				</StatechartElement>
 				<StatechartElement Class="Transition" ParentState="Movement" ParentStateId="1288356033844">
@@ -1194,12 +1299,13 @@
 					</Points>
 					<IconOffset>29.355339059327378</IconOffset>
 					<Properties Source="1288356033844" Target="1288356033844" Trigger="condition">
-						<Action><![CDATA[vy=-(1-k)*vy;]]></Action>
+						<Action><![CDATA[vy=-(1-k)*vy;
+t0 = time();]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 						</Timeout>
-						<Condition><![CDATA[y <= r && vy < 0 ]]></Condition>
+						<Condition><![CDATA[y <= r && vy < 0 || y >= 500 - r && vy > 0]]></Condition>
 						<Rate Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
@@ -1208,6 +1314,38 @@
 						<DefaultTransition>true</DefaultTransition>
 						<FilterType><![CDATA[unconditionally]]></FilterType>
 						<EqualsExpression><![CDATA[Sample_Message]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="Movement" ParentStateId="1288356033844">
+					<Id>1777096246442</Id>
+					<Name><![CDATA[transition1]]></Name>
+					<X>490</X><Y>130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>60</X><Y>60</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1288356033844" Target="1288356033844" Trigger="condition">
+						<Action><![CDATA[vx = -(1 - k) * vx;
+t0 = time();]]></Action>
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[x <= r && vx < 0 || x >= 500 - r && vx > 0]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
 						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
 					</Properties>	
 				</StatechartElement>
@@ -1225,6 +1363,11 @@
 					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
 					<AgentLinkBidirectional>true</AgentLinkBidirectional>
 					<MessageType><![CDATA[Object]]></MessageType>
+					<StatechartReference>
+						<PackageName><![CDATA[balls]]></PackageName>
+						<ClassName><![CDATA[Ball]]></ClassName>
+						<ItemName><![CDATA[statechart]]></ItemName>
+					</StatechartReference>
 					<LineStyle>SOLID</LineStyle>
 					<LineWidth>1</LineWidth>
 					<LineColor>-16777216</LineColor>
