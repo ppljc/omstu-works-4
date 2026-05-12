@@ -277,7 +277,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.63]]></Code>
+							<Code><![CDATA[3.14]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1778479971580</Id>
@@ -609,7 +609,7 @@
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
-						<Title><![CDATA[Title]]></Title>
+						<Title><![CDATA[Дальность полета]]></Title>
 					<Id>1778479908950</Id>
 					<Expression><![CDATA[dataset]]></Expression>
 					<Color>-10496</Color>
