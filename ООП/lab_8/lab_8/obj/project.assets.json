@@ -8,19 +8,19 @@
     "net10.0": []
   },
   "packageFolders": {
-    "/home/ppljc/.nuget/packages/": {}
+    "C:\\Users\\ppljc\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ppljc/omstu-works-4/ООП/lab_8/lab_8/lab_8.csproj",
+      "projectUniqueName": "D:\\@home\\ppljc\\omstu-works-4\\ООП\\lab_8\\lab_8\\lab_8.csproj",
       "projectName": "lab_8",
-      "projectPath": "/home/ppljc/omstu-works-4/ООП/lab_8/lab_8/lab_8.csproj",
-      "packagesPath": "/home/ppljc/.nuget/packages/",
-      "outputPath": "/home/ppljc/omstu-works-4/ООП/lab_8/lab_8/obj/",
+      "projectPath": "D:\\@home\\ppljc\\omstu-works-4\\ООП\\lab_8\\lab_8\\lab_8.csproj",
+      "packagesPath": "C:\\Users\\ppljc\\.nuget\\packages\\",
+      "outputPath": "D:\\@home\\ppljc\\omstu-works-4\\ООП\\lab_8\\lab_8\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/ppljc/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\ppljc\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
@@ -44,7 +44,7 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net10.0": {
@@ -60,18 +60,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[10.0.4, 10.0.4]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.104/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
